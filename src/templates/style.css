@@ -1,0 +1,159 @@
+﻿@page {
+    margin: 1.0cm;  /* Reduced margins to give more space */
+    size: A4;       /* Explicitly set page size */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.invoice {
+    max-width: 900px;  /* Increased width */
+    margin: 0 auto;
+    background: white;
+    padding: 10px;     /* Top padding */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5px;  /* More space after header */
+}
+
+.logo {
+    flex: 0 0 300px;  /* Fixed width for logo area */
+}
+
+.logo img {
+    max-width: 180px; 
+    height: auto;
+}
+
+.title {
+    text-align: right;
+    padding-left: 40px;
+}
+
+.title h1 {
+    font-size: 36px;   /* Larger title */
+    margin: 0 0 15px 0;
+    font-weight: bold;
+}
+
+.info-section {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    gap: 100px;        /* Space between columns */
+}
+
+.invoice-details {
+    flex: 1;
+}
+
+.details-table {
+    width: 100%;
+}
+
+.details-table td {
+    padding: 3px 0;
+}
+
+.details-table td:first-child {
+    /* Right align the labels */
+    text-align: right;
+    padding-right: 15px;
+    width: 150px;  /* Fixed width for alignment */
+}
+
+.details-table td:last-child {
+    /* Left align the values */
+    text-align: left;
+}
+
+.bill-to {
+    flex: 1;
+}
+
+.invoice-details {
+    flex: 1;
+    text-align: left;
+}
+
+.services-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 40px 0;
+}
+
+/* Table header alignment */
+.services-table th {
+    background-color: #00B5D6;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.services-table th:nth-child(2) {
+    text-align: left !important;  /* Services header */
+}
+
+/* Table data alignment */
+.services-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+    text-align: center !important;
+}
+
+/* Column-specific styles */
+.services-table td:first-child {
+    width: 100px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.services-table tbody td:nth-child(2) {
+    text-align: left !important;  /* Services description */
+}
+.services-table td:nth-child(2) {
+    width: 60%;       /* Services gets half the table width */
+}
+
+/* Optional: if you want to control column widths */
+.services-table th:nth-child(3),
+.services-table th:nth-child(4),
+.services-table th:nth-child(5)  {
+    width: calc((100% - 100px - 60%) / 3);  /* Remaining space divided equally */
+}
+
+.totals {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.totals-table {
+    width: 300px;      /* Fixed width for totals */
+    margin-left: auto;
+}
+
+.totals-table td {
+    padding: 8px 0;
+}
+
+.totals-table td:last-child {
+    padding-left: 40px;
+}
+
+.company-info {
+    text-align: right;
+    line-height: 1.5;
+    margin-top: 10px;
+}

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+</head>
+<body>
+    <div class="invoice">
+        <div class="header">
+            <div class="logo">
+                {% if data.logo_exists %}
+                <img src="{{ data.logo_url }}" alt="Logo">
+                {% endif %}
+            </div>
+            <div class="title">
+                <h1>INVOICE</h1>
+                <div class="company-info">
+                    <strong>{{ data.company.name }}</strong><br>
+                    {{ data.company.street }}<br>
+                    {{ data.company.city }}, {{ data.company.state }} {{ data.company.zip }}
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="bill-to">
+                Bill to<br>
+                <strong>{{ data.client.name }}</strong><br>
+                {{ data.client.contact }}<br></br>
+                {{ data.client.phone }}<br>
+                {{ data.client.email }}
+            </div>
+            <div class="invoice-details">
+                <table class="details-table">
+                    <tr>
+                        <td><strong>Invoice Number:</strong></td>
+                        <td>{{ data.invoice_number }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Invoice Date:</strong></td>
+                        <td>{{ data.issue_date.strftime('%B %d, %Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Payment Due:</strong></td>
+                        <td>{{ data.due_date.strftime('%B %d, %Y') }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amount Due (USD):</td>
+                        <td><strong>${{ "%.2f"|format(data.total) }}</strong></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <table class="services-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Services</th>
+                    <th>Hours</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data.services %}
+                <tr>
+                    <td style="text-align: center;">{{ item.date }}</td>
+                    <td>
+                        <strong>{{ item.type }}</strong><br>
+                        {{ item.description }}
+                    </td>
+                    <td style="text-align: center;">{{ "%.1f"|format(item.hours) }}</td>
+                    <td style="text-align: center;">${{ "%.2f"|format(item.rate) }}</td>
+                    <td style="text-align: center;">${{ "%.2f"|format(item.amount) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="totals">
+            <table class="totals-table">
+                <tr>
+                    <td>Total:</td>
+                    <td>${{ "%.2f"|format(data.total) }}</td>
+                </tr>
+                <tr>
+                    <td>Amount Due (USD):</td>
+                    <td><strong>${{ "%.2f"|format(data.total) }}</strong></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
